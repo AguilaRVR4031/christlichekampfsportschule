@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christliche Kampfsportschule — Trainiere mit Ziel, kämpfe mit Herz</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B0B0C;
+    --panel:#141414;
+    --panel-2:#1B1A18;
+    --gold:#C6A15B;
+    --gold-2:#8C6B2F;
+    --bone:#F3F1EA;
+    --bone-dim:#B9B5A9;
+  }
+  html{scroll-behavior:smooth;}
+  body{
+    background-color:var(--ink);
+    color:var(--bone);
+    font-family:'Work Sans',sans-serif;
+  }
+  .font-display{
+    font-family:'Oswald',sans-serif;
+    letter-spacing:0.02em;
+  }
+  .text-gold{color:var(--gold);}
+  .bg-panel{background-color:var(--panel);}
+  .bg-panel-2{background-color:var(--panel-2);}
+  .border-gold{border-color:var(--gold);}
+  .gold-gradient{
+    background:linear-gradient(135deg,var(--gold) 0%, var(--gold-2) 100%);
+  }
+  .cross-mark{
+    position:relative;
+    display:inline-block;
+  }
+  .divider-cross::before{
+    content:"";
+    display:block;
+    width:1px;
+    height:2.5rem;
+    margin:0 auto 1rem auto;
+    background:linear-gradient(to bottom, transparent, var(--gold));
+  }
+  .divider-cross::after{
+    content:"";
+    display:block;
+    width:1.75rem;
+    height:1px;
+    margin:0 auto 1.5rem auto;
+    background:var(--gold);
+  }
+  .card{
+    background-color:var(--panel);
+    border:1px solid rgba(198,161,91,0.15);
+    transition:border-color .3s ease, transform .3s ease;
+  }
+  .card:hover{
+    border-color:rgba(198,161,91,0.5);
+    transform:translateY(-4px);
+  }
+  .btn-gold{
+    background:var(--gold);
+    color:var(--ink);
+    font-weight:600;
+    transition:background .25s ease, transform .2s ease;
+  }
+  .btn-gold:hover{
+    background:#D8B978;
+    transform:translateY(-2px);
+  }
+  .btn-outline{
+    border:1px solid var(--gold);
+    color:var(--gold);
+    transition:background .25s ease, color .25s ease;
+  }
+  .btn-outline:hover{
+    background:var(--gold);
+    color:var(--ink);
+  }
+  .timeline-line{
+    background:linear-gradient(to bottom, transparent, var(--gold) 10%, var(--gold) 90%, transparent);
+  }
+  .timeline-dot{
+    background:var(--ink);
+    border:2px solid var(--gold);
+  }
+  .hero-scrim{
+    background:linear-gradient(180deg, rgba(11,11,12,0.55) 0%, rgba(11,11,12,0.85) 55%, rgba(11,11,12,1) 100%);
+  }
+  input, textarea{
+    background-color:var(--panel-2);
+    border:1px solid rgba(198,161,91,0.25);
+    color:var(--bone);
+  }
+  input:focus, textarea:focus{
+    outline:none;
+    border-color:var(--gold);
+    box-shadow:0 0 0 3px rgba(198,161,91,0.15);
+  }
+  ::selection{
+    background:var(--gold);
+    color:var(--ink);
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .card, .btn-gold, .btn-outline{transition:none;}
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- NAV -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-[var(--ink)]/90 backdrop-blur border-b border-[rgba(198,161,91,0.15)]">
+  <nav class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+    <a href="#hero" class="font-display text-lg md:text-xl tracking-widest uppercase text-bone">
+      Kampfsport<span class="text-gold">schule</span>
+    </a>
+    <div class="hidden lg:flex items-center gap-7 font-display text-sm uppercase tracking-wider text-[var(--bone-dim)]">
+      <a href="#vision" class="hover:text-gold transition">Unsere Vision</a>
+      <a href="#training" class="hover:text-gold transition">Unser Training</a>
+      <a href="#status" class="hover:text-gold transition">Wo wir stehen</a>
+      <a href="#about" class="hover:text-gold transition">Über uns</a>
+      <a href="#kontakt" class="btn-outline px-4 py-2 rounded-full">Kontakt</a>
+    </div>
+    <!-- Mobile: kompaktes Menü -->
+    <div class="lg:hidden flex items-center gap-4">
+      <button id="menu-toggle" class="text-gold" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path id="menu-icon-open" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobiles Ausklappmenü -->
+  <div id="mobile-menu" class="lg:hidden hidden flex-col border-t border-[rgba(198,161,91,0.15)] bg-[var(--ink)]">
+    <a href="#vision" class="menu-link px-6 py-4 border-b border-[rgba(198,161,91,0.08)] font-display uppercase tracking-wider text-sm text-[var(--bone-dim)] hover:text-gold transition">Unsere Vision</a>
+    <a href="#training" class="menu-link px-6 py-4 border-b border-[rgba(198,161,91,0.08)] font-display uppercase tracking-wider text-sm text-[var(--bone-dim)] hover:text-gold transition">Unser Training</a>
+    <a href="#status" class="menu-link px-6 py-4 border-b border-[rgba(198,161,91,0.08)] font-display uppercase tracking-wider text-sm text-[var(--bone-dim)] hover:text-gold transition">Wo wir stehen</a>
+    <a href="#about" class="menu-link px-6 py-4 border-b border-[rgba(198,161,91,0.08)] font-display uppercase tracking-wider text-sm text-[var(--bone-dim)] hover:text-gold transition">Über uns</a>
+    <a href="#kontakt" class="menu-link px-6 py-4 font-display uppercase tracking-wider text-sm text-gold">Kontakt</a>
+  </div>
+</header>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon-open');
+
+  function closeMenu(){
+    mobileMenu.classList.add('hidden');
+    mobileMenu.classList.remove('flex');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+  }
+
+  function openMenu(){
+    mobileMenu.classList.remove('hidden');
+    mobileMenu.classList.add('flex');
+    menuToggle.setAttribute('aria-expanded', 'true');
+    menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+  }
+
+  menuToggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.contains('flex');
+    isOpen ? closeMenu() : openMenu();
+  });
+
+  document.querySelectorAll('.menu-link').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+</script>
+
+<!-- HERO -->
+<section id="hero" class="relative min-h-screen flex items-center justify-center text-center px-6 pt-24">
+  <div class="absolute inset-0">
+    <img src="BildLöwe" alt="Kampfsporttraining" class="w-full h-full object-cover opacity-60">
+    <div class="absolute inset-0 hero-scrim"></div>
+  </div>
+  <div class="relative z-10 max-w-3xl mx-auto">
+    <p class="font-display uppercase tracking-[0.3em] text-gold text-xs md:text-sm mb-6">Glaube · Disziplin · Stärke</p>
+    <h1 class="font-display text-4xl sm:text-5xl md:text-7xl font-semibold uppercase leading-tight text-bone">
+      Christliche <span class="text-gold">Kampfsportschule</span>
+    </h1>
+    <p class="mt-6 text-lg md:text-xl font-display text-bone">
+      „Trainiere mit Ziel, kämpfe mit Herz.“
+      <span class="block text-sm md:text-base text-[var(--bone-dim)] mt-1">— 1. Korinther 9,26</span>
+    </p>
+    <p class="mt-6 text-base md:text-lg text-[var(--bone-dim)] max-w-xl mx-auto">
+      Körperliche Fitness, Charakterreife und Glaube in Aktion.
+    </p>
+    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="#vision" class="btn-gold w-full sm:w-auto px-8 py-3 rounded-full font-display uppercase tracking-wider text-sm">Zur Vision</a>
+      <a href="#kontakt" class="btn-outline w-full sm:w-auto px-8 py-3 rounded-full font-display uppercase tracking-wider text-sm">Mitmachen / Kontakt</a>
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section id="vision" class="py-24 px-6 bg-[var(--ink)]">
+  <div class="max-w-5xl mx-auto text-center divider-cross">
+    <p class="font-display uppercase tracking-[0.3em] text-gold text-xs md:text-sm mb-3">Unsere Vision</p>
+    <p class="text-lg md:text-xl leading-relaxed text-bone max-w-3xl mx-auto">
+      Wir glauben, dass die Welt mehr denn je starke, mutige und entschlossene Menschen braucht – Männer, Frauen und Kinder, die fest im Glauben stehen, Verantwortung übernehmen und Licht in dieser Welt sind. Unsere christliche Kampfsportschule ist ein Ort, an dem körperliche Fitness, Charakterreife und die Nachfolge Jesu Hand in Hand gehen.
+    </p>
+  </div>
+
+  <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 mt-16">
+    <div class="card rounded-2xl p-8">
+      <div class="w-12 h-12 rounded-full gold-gradient flex items-center justify-center mb-6">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[var(--ink)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+      </div>
+      <h3 class="font-display text-xl uppercase tracking-wide text-bone mb-3">Körper, Charakter &amp; Glaube</h3>
+      <p class="text-[var(--bone-dim)] leading-relaxed">
+        Bei uns baust du echte Schlagkraft, Flexibilität, Schnelligkeit und Gleichgewicht auf. Wir formen den Charakter, stärken das Vertrauen und schulen die Disziplin. Du lernst, deine Grenzen zu verschieben und Hindernissen mit Gottvertrauen zu begegnen.
+      </p>
+    </div>
+    <div class="card rounded-2xl p-8">
+      <div class="w-12 h-12 rounded-full gold-gradient flex items-center justify-center mb-6">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[var(--ink)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21c-4-3-8-6.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 4.5-4 8-8 11-.5.4-1.5.4-2 0z"/></svg>
+      </div>
+      <h3 class="font-display text-xl uppercase tracking-wide text-bone mb-3">In der Nachfolge Jesu</h3>
+      <p class="text-[var(--bone-dim)] leading-relaxed">
+        Im Zentrum unseres Trainings stehen Werte, die uns Jesus Christus vorgelebt hat: Respekt, Nächstenliebe, Demut und der Schutz der Schwachen. Stärke nutzen wir nicht, um uns über andere zu erheben, sondern um zu dienen und Gutes zu tun.
+      </p>
+    </div>
+    <div class="card rounded-2xl p-8">
+      <div class="w-12 h-12 rounded-full gold-gradient flex items-center justify-center mb-6">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[var(--ink)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a4 4 0 0 0-3-3.87M9 20H4v-2a4 4 0 0 1 3-3.87m5-3.13a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm6 0a4 4 0 1 0 0-8"/></svg>
+      </div>
+      <h3 class="font-display text-xl uppercase tracking-wide text-bone mb-3">Jeder ist willkommen</h3>
+      <p class="text-[var(--bone-dim)] leading-relaxed">
+        Egal woher du kommst, was deine Geschichte ist oder auf welchem Fitnesslevel du startest: Du bist willkommen, genau so wie du bist. Unsere Kurse sind sowohl für Kinder als auch für Erwachsene maßgeschneidert.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINING -->
+<section id="training" class="py-24 px-6 bg-panel-2 border-y border-[rgba(198,161,91,0.15)]">
+  <div class="max-w-4xl mx-auto text-center divider-cross">
+    <p class="font-display uppercase tracking-[0.3em] text-gold text-xs md:text-sm mb-3">Unser Training</p>
+    <p class="text-lg leading-relaxed text-bone">
+      Unser Training folgt einer klaren Struktur, die Körper, Charakter und Glauben gleichermaßen fordert. Bei uns geht es nicht um stumpfe Härte, sondern um Disziplin, echte Gemeinschaft und die Ehre Gottes.
+    </p>
+  </div>
+
+  <!-- Timeline -->
+  <div class="max-w-3xl mx-auto mt-16 relative">
+    <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px timeline-line md:-translate-x-1/2"></div>
+
+    <div class="space-y-12">
+      <div class="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-10 items-center">
+        <span class="absolute left-4 md:left-1/2 top-1 w-3 h-3 rounded-full timeline-dot -translate-x-1/2"></span>
+        <div class="md:text-right md:pr-2">
+          <h4 class="font-display uppercase text-gold tracking-wide mb-1">Ausrichtung &amp; Startgebet</h4>
+          <p class="text-[var(--bone-dim)]">Gemeinsamer Start vor Jesus Christus, Fokus ausrichten und Segen erbitten.</p>
+        </div>
+        <div class="hidden md:block"></div>
+      </div>
+
+      <div class="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-10 items-center">
+        <span class="absolute left-4 md:left-1/2 top-1 w-3 h-3 rounded-full timeline-dot -translate-x-1/2"></span>
+        <div class="hidden md:block"></div>
+        <div class="md:pl-2">
+          <h4 class="font-display uppercase text-gold tracking-wide mb-1">Aufwärmen &amp; Workout</h4>
+          <p class="text-[var(--bone-dim)]">Ausdauer, Kraft, Schnelligkeit und Beweglichkeit mit funktionellem Fitness-Training.</p>
+        </div>
+      </div>
+
+      <div class="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-10 items-center">
+        <span class="absolute left-4 md:left-1/2 top-1 w-3 h-3 rounded-full timeline-dot -translate-x-1/2"></span>
+        <div class="md:text-right md:pr-2">
+          <h4 class="font-display uppercase text-gold tracking-wide mb-1">Pratzen &amp; Technik</h4>
+          <p class="text-[var(--bone-dim)]">Präzision bei Kicks und Punches an Schlagpolstern und in Partnerübungen.</p>
+        </div>
+        <div class="hidden md:block"></div>
+      </div>
+
+      <div class="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-10 items-center">
+        <span class="absolute left-4 md:left-1/2 top-1 w-3 h-3 rounded-full timeline-dot -translate-x-1/2"></span>
+        <div class="hidden md:block"></div>
+        <div class="md:pl-2">
+          <h4 class="font-display uppercase text-gold tracking-wide mb-1">Kontrolliertes Sparring (Freiwillig)</h4>
+          <p class="text-[var(--bone-dim)]">Übungskampf in gegenseitiger Rücksichtnahme.</p>
+        </div>
+      </div>
+
+      <div class="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-10 items-center">
+        <span class="absolute left-4 md:left-1/2 top-1 w-3 h-3 rounded-full timeline-dot -translate-x-1/2"></span>
+        <div class="md:text-right md:pr-2">
+          <h4 class="font-display uppercase text-gold tracking-wide mb-1">Abschlussgebet &amp; Segen</h4>
+          <p class="text-[var(--bone-dim)]">Dank für die Bewahrung und Kraft tanken für den Alltag.</p>
+        </div>
+        <div class="hidden md:block"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Infobox: Grundsatz -->
+  <div class="max-w-4xl mx-auto mt-20">
+    <div class="rounded-2xl p-8 md:p-10 bg-[var(--ink)] border border-gold relative overflow-hidden">
+      <div class="absolute -top-10 -right-10 w-40 h-40 rounded-full gold-gradient opacity-10 blur-2xl"></div>
+      <p class="font-display uppercase tracking-widest text-gold text-xs mb-3">Alles zur Ehre Jesu</p>
+      <h3 class="font-display text-2xl md:text-3xl uppercase text-bone mb-4">Kontrolle statt Aggression</h3>
+      <p class="text-[var(--bone-dim)] leading-relaxed">
+        Unser Vorbild ist Jesus Christus. Er besaß alle Macht der Welt, begegnete den Menschen jedoch mit Sanftmut und vollkommener Selbstbeherrschung. Aggressionen und Egotrips haben bei uns keinen Platz. Wahre Stärke zeigt sich darin, die eigene Schlagkraft zu kontrollieren und den Trainingspartner zu schützen. Sicherheit geht immer vor.
+      </p>
+    </div>
+  </div>
+
+  <!-- Ausrüstung -->
+  <div class="max-w-5xl mx-auto mt-16">
+    <p class="font-display uppercase tracking-widest text-gold text-xs mb-6 text-center">Ausrüstungs-Info</p>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="card rounded-2xl p-6 text-center">
+        <p class="font-display uppercase text-bone tracking-wide mb-2">Für den Anfang</p>
+        <p class="text-[var(--bone-dim)] text-sm">Normale Sportkleidung &amp; Wasserflasche.</p>
+      </div>
+      <div class="card rounded-2xl p-6 text-center border-gold/40">
+        <p class="font-display uppercase text-bone tracking-wide mb-2">Empfohlen</p>
+        <p class="text-[var(--bone-dim)] text-sm">Eigene Boxhandschuhe.</p>
+      </div>
+      <div class="card rounded-2xl p-6 text-center">
+        <p class="font-display uppercase text-bone tracking-wide mb-2">Ideal</p>
+        <p class="text-[var(--bone-dim)] text-sm">Komplettes Equipment (Handschuhe, Zahnschutz, Schienbeinschoner, Bandagen).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATUS QUO -->
+<section id="status" class="py-24 px-6 bg-[var(--ink)]">
+  <div class="max-w-3xl mx-auto text-center divider-cross">
+    <p class="font-display uppercase tracking-[0.3em] text-gold text-xs md:text-sm mb-3">Wo wir stehen</p>
+    <h2 class="font-display text-3xl md:text-4xl uppercase text-bone">Der Anfang einer neuen Reise</h2>
+  </div>
+
+  <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-6 mt-16">
+    <div class="card rounded-2xl p-8">
+      <span class="font-display text-4xl text-gold">01</span>
+      <h3 class="font-display uppercase text-bone tracking-wide mt-4 mb-3">Location-Suche</h3>
+      <p class="text-[var(--bone-dim)] leading-relaxed text-sm">
+        Wir suchen intensiv nach geeigneten Räumlichkeiten. Bitte betet mit uns, dass Gott uns den richtigen Raum schenkt! Hinweise sind herzlich willkommen.
+      </p>
+    </div>
+    <div class="card rounded-2xl p-8">
+      <span class="font-display text-4xl text-gold">02</span>
+      <h3 class="font-display uppercase text-bone tracking-wide mt-4 mb-3">Equipment</h3>
+      <p class="text-[var(--bone-dim)] leading-relaxed text-sm">
+        Sobald die Zusage für den Raum steht, besorgen wir das nötigste Grund-Equipment (Matten, Pratzen).
+      </p>
+    </div>
+    <div class="card rounded-2xl p-8">
+      <span class="font-display text-4xl text-gold">03</span>
+      <h3 class="font-display uppercase text-bone tracking-wide mt-4 mb-3">Sei von Anfang an dabei</h3>
+      <p class="text-[var(--bone-dim)] leading-relaxed text-sm">
+        Wir suchen offene Menschen jeden Alters, die Lust haben, von der ersten Stunde an mitzutrainieren. Ihr werdet es nicht bereuen!
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ÜBER UNS -->
+<section id="about" class="py-24 px-6 bg-panel-2 border-y border-[rgba(198,161,91,0.15)]">
+  <div class="max-w-5xl mx-auto text-center divider-cross">
+    <p class="font-display uppercase tracking-[0.3em] text-gold text-xs md:text-sm mb-3">Über uns</p>
+  </div>
+
+  <div class="max-w-5xl mx-auto mt-12 card rounded-2xl overflow-hidden md:grid md:grid-cols-5">
+    <div class="md:col-span-2 h-72 md:h-auto">
+      <img src="images/profil.jpg" alt="Gründer der Kampfsportschule" class="w-full h-full object-cover">
+    </div>
+    <div class="md:col-span-3 p-8 md:p-10">
+      <h3 class="font-display text-2xl md:text-3xl uppercase text-bone mb-4">
+        Vom Suchen nach Identität <span class="text-gold">zur echten Stärke in Jesus</span>
+      </h3>
+      <p class="text-[var(--bone-dim)] leading-relaxed">
+        Ich bin ohne Vater aufgewachsen. In meiner Jugend gab es niemanden, der mir Mut und Stärke zugesprochen hat. Diese Leere führte zu tiefen Unsicherheiten, die ich mit Partys und Alkohol zu überspielen versuchte. Nach einer Rangelei im Club und einer Faust im Gesicht wurde mir klar: Ich muss etwas verändern. Ich begann mit intensivem TaeKwonDo und wurde vom Großmeister als Hilfstrainer ausgebildet. Doch die tiefste Veränderung passierte in einer dunklen Nacht, als mir Jesus Christus begegnete. Er füllte die Lücke des fehlenden Vaters und gab mir echte Identität. Heute möchte ich Menschen ermutigen und ihnen zeigen, was mit Gott und Disziplin möglich ist.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt" class="py-24 px-6 bg-[var(--ink)]">
+  <div class="max-w-3xl mx-auto text-center divider-cross">
+    <p class="font-display uppercase tracking-[0.3em] text-gold text-xs md:text-sm mb-3">Kontakt</p>
+    <h2 class="font-display text-3xl md:text-4xl uppercase text-bone">Werde Teil der ersten Stunde</h2>
+    <p class="text-[var(--bone-dim)] mt-4">Schreib uns eine Nachricht — wir melden uns bei dir.</p>
+  </div>
+
+  <form class="max-w-xl mx-auto mt-12 space-y-5">
+    <div>
+      <label for="name" class="block font-display uppercase text-xs tracking-wider text-gold mb-2">Name</label>
+      <input id="name" name="name" type="text" placeholder="Dein Name" class="w-full rounded-lg px-4 py-3">
+    </div>
+    <div>
+      <label for="email" class="block font-display uppercase text-xs tracking-wider text-gold mb-2">E-Mail</label>
+      <input id="email" name="email" type="email" placeholder="deine@email.de" class="w-full rounded-lg px-4 py-3">
+    </div>
+    <div>
+      <label for="message" class="block font-display uppercase text-xs tracking-wider text-gold mb-2">Nachricht</label>
+      <textarea id="message" name="message" rows="5" placeholder="Deine Nachricht an uns..." class="w-full rounded-lg px-4 py-3"></textarea>
+    </div>
+    <button type="submit" class="btn-gold w-full py-3 rounded-full font-display uppercase tracking-wider text-sm">Nachricht senden</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-[rgba(198,161,91,0.15)] py-10 px-6">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-[var(--bone-dim)]">
+    <p>&copy; 2026 Christliche Kampfsportschule. Alle Rechte vorbehalten.</p>
+    <div class="flex items-center gap-6 font-display uppercase tracking-wider text-xs">
+      <a href="#" class="hover:text-gold transition">Impressum</a>
+      <a href="#" class="hover:text-gold transition">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
